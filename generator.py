@@ -24,3 +24,18 @@ for number in range(1,9):
         field_value = random.randint(1,9)
 
     fields["A" + str(number + 1)] = field_value
+
+for number in range(1, 9):
+    field_value = random.randint(1,9)
+    i = 0
+    d = 0
+    while True:
+        field_value = random.randint(1,9)
+        dict_values = str(fields.values()).strip("dict_values([])")
+        print(dict_values)
+
+
+    fields["B" + str(number + 1)] = field_value
+
+for n in range(1, 10):
+    print(fields["A" + str(n)], end=" ")
