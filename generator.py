@@ -14,28 +14,26 @@ pygame.display.flip()
 """
 
 
-fields = {"A1" : random.randint(1,9),
+fields = {"A" : [random.randint(1,9)],
         }
 
 for number in range(1,9):
     field_value = random.randint(1,9)
 
-    while field_value in fields.values():
+    while field_value in fields["A"]:
         field_value = random.randint(1,9)
 
-    fields["A" + str(number + 1)] = field_value
+    fields["A"].append(field_value)
 
+"""
 for number in range(1, 9):
     field_value = random.randint(1,9)
-    i = 0
-    d = 0
     while True:
         field_value = random.randint(1,9)
-        dict_values = str(fields.values()).strip("dict_values([])")
-        print(dict_values)
 
 
-    fields["B" + str(number + 1)] = field_value
 
-for n in range(1, 10):
-    print(fields["A" + str(n)], end=" ")
+    fields["B"].append(field_value)
+"""
+
+print(fields["A"])
