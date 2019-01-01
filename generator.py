@@ -21,36 +21,60 @@ def check_validity(key, field_value):
     if actual_position >= 68 and actual_position < 71:
         validations_needed = actual_position - 67
         validation_done = 0
+        for key_this in fields:
+            print(key_this)
+            if key_this == key:
+                break
+            print(key)
+            print(len(fields[key]))
+            print(fields["A"])
+            print(fields["B"])
+            print(fields["C"])
+            print(fields["D"])
+            print(fields["E"])
+            print("field value = " + str(field_value))
+            if field_value == fields[key_this][len(fields[key])]:
+                print("MIERDAAA")
+                print(str(field_value) + "==" + str(fields[key_this][len(fields[key])]))
+                return False
 
     for validation in range(1, validations_needed + 1):
-        if key == "D":
-            for key_this in fields:
-                print(key_this)
-                if key_this == key:
-                    break
-                print(key)
-                print(len(fields[key]))
-                print(fields["A"])
-                print(fields["B"])
-                print(fields["C"])
-                print(fields["D"])
-                if field_value == fields[key_this][len(fields[key])]:
-                    return False
+        if actual_position > 65 and actual_position < 68:
+            if field_value not in fields[str(chr(actual_position-1))][x:y + 1] and field_value not in fields[key]:
+                #print(fields[str(chr(actual_position-1))][x:y + 1])
+                actual_position -= 1
+                validation_done += 1
+                #print(str(validations_needed) + "/done: " + str(validation_done))
 
-        if field_value not in fields[str(chr(actual_position-1))][x:y + 1] and field_value not in fields[key]:
-            #print(fields[str(chr(actual_position-1))][x:y + 1])
-            actual_position -= 1
-            validation_done += 1
-            #print(str(validations_needed) + "/done: " + str(validation_done))
+                if validation_done == validations_needed:
+                    return True
+            else:
+                return False
+        if actual_position == 68:
+            if field_value not in fields[key]:
+                actual_position -= 1
+                validation_done += 1
+                #print(str(validations_needed) + "/done: " + str(validation_done))
 
-            if validation_done == validations_needed:
-                return True
-        else:
-            return False
+                if validation_done == validations_needed:
+                    return True
+            else:
+                return False
 
+        if actual_position > 68 and actual_position < 71:
+            if field_value not in fields[str(chr(actual_position-1))][x:y + 1] and field_value not in fields[key]:
+                #print(fields[str(chr(actual_position-1))][x:y + 1])
+                actual_position -= 1
+                validation_done += 1
+                #print(str(validations_needed) + "/done: " + str(validation_done))
+
+                if validation_done == validations_needed:
+                    return True
+            else:
+                return False
 
 fields = {  "A" : [random.randint(1,9)],
-            "B":[], "C": [], "D": [],
+            "B":[], "C": [], "D": [], "E": [], "F": [],
         }
 
 for number in range(1,9):
@@ -86,3 +110,5 @@ print(fields["A"])
 print(fields["B"])
 print(fields["C"])
 print(fields["D"])
+print(fields["E"])
+print(fields["F"])
