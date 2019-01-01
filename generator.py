@@ -14,7 +14,8 @@ pygame.display.flip()
 """
 
 
-fields = {"A" : [random.randint(1,9)],
+fields = {  "A" : [random.randint(1,9)],
+            "B":[]
         }
 
 for number in range(1,9):
@@ -25,15 +26,23 @@ for number in range(1,9):
 
     fields["A"].append(field_value)
 
-"""
-for number in range(1, 9):
-    field_value = random.randint(1,9)
+x = 0
+y = 2
+i = 0
+for number in range(1, 4):
     while True:
         field_value = random.randint(1,9)
+        if field_value not in fields["A"][x:y] and field_value not in fields["B"]:
+            fields["B"].append(field_value)
+            i += 1
+            if i == 3:
+                x = y + 1
+                y += 3
+                i = 0
+                break
 
 
 
-    fields["B"].append(field_value)
-"""
 
 print(fields["A"])
+print(fields["B"])
