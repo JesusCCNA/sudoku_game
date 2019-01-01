@@ -13,9 +13,18 @@ pygame.display.set_caption("Sudoku Game - JesusCCNA ")
 pygame.display.flip()
 """
 
+def check_validity(key, field_value):
+    actual_position = ord(key)
+
+    while (actual_position > 65):
+        if field_value not in fields[str(chr(actual_position-1))][x:y + 1] and field_value not in fields[key]:
+            actual_position -= 1
+            return True
+        else:
+            return False
 
 fields = {  "A" : [random.randint(1,9)],
-            "B":[]
+            "B":[], "C": [],
         }
 
 for number in range(1,9):
@@ -29,20 +38,24 @@ for number in range(1,9):
 x = 0
 y = 2
 i = 0
-for number in range(1, 4):
-    while True:
-        field_value = random.randint(1,9)
-        if field_value not in fields["A"][x:y] and field_value not in fields["B"]:
-            fields["B"].append(field_value)
-            i += 1
-            if i == 3:
-                x = y + 1
-                y += 3
-                i = 0
-                break
 
+for key in fields.keys():
+    if key == "A":
+        continue
+    for number in range(1, 4):
+        while True:
+            field_value = random.randint(1,9)
+            if check_validity(key, field_value):
+                fields[key].append(field_value)
+                i += 1
+                if i == 3:
+                    x = y + 1
+                    y += 3
+                    i = 0
+                    break
 
 
 
 print(fields["A"])
 print(fields["B"])
+print(fields["C"])
