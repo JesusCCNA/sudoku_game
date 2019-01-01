@@ -32,11 +32,37 @@ def check_validity(key, field_value):
             print(fields["C"])
             print(fields["D"])
             print(fields["E"])
+            print(fields["F"])
+            print("field value = " + str(field_value))
+            if field_value == fields[key_this][len(fields[key])]:
+                print("ERROR")
+                print(str(field_value) + "==" + str(fields[key_this][len(fields[key])]))
+                return False
+
+    if actual_position >= 71 and actual_position < 73:
+        validations_needed = actual_position - 70
+        validation_done = 0
+        for key_this in fields:
+            print(key_this)
+            if key_this == key:
+                break
+            print(key)
+            print(len(fields[key]))
+            print(fields["A"])
+            print(fields["B"])
+            print(fields["C"])
+            print(fields["D"])
+            print(fields["E"])
+            print(fields["F"])
+            print(fields["G"])
             print("field value = " + str(field_value))
             if field_value == fields[key_this][len(fields[key])]:
                 print("MIERDAAA")
                 print(str(field_value) + "==" + str(fields[key_this][len(fields[key])]))
                 return False
+
+
+
 
     for validation in range(1, validations_needed + 1):
         if actual_position > 65 and actual_position < 68:
@@ -73,8 +99,19 @@ def check_validity(key, field_value):
             else:
                 return False
 
+        if actual_position == 71:
+            if field_value not in fields[key]:
+                actual_position -= 1
+                validation_done += 1
+                #print(str(validations_needed) + "/done: " + str(validation_done))
+
+                if validation_done == validations_needed:
+                    return True
+            else:
+                return False
+
 fields = {  "A" : [random.randint(1,9)],
-            "B":[], "C": [], "D": [], "E": [], "F": [],
+            "B":[], "C": [], "D": [], "E": [], "F": [], "G": [],
         }
 
 for number in range(1,9):
@@ -112,3 +149,4 @@ print(fields["C"])
 print(fields["D"])
 print(fields["E"])
 print(fields["F"])
+print(fields["G"])
