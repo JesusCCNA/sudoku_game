@@ -15,9 +15,28 @@ pygame.display.flip()
 
 def check_validity(key, field_value):
     actual_position = ord(key)
-    validations_needed = actual_position - 65
-    validation_done = 0
+    if actual_position > 65 and actual_position < 68:
+        validations_needed = actual_position - 65
+        validation_done = 0
+    if actual_position >= 68 and actual_position < 71:
+        validations_needed = actual_position - 67
+        validation_done = 0
+
     for validation in range(1, validations_needed + 1):
+        if key == "D":
+            for key_this in fields:
+                print(key_this)
+                if key_this == key:
+                    break
+                print(key)
+                print(len(fields[key]))
+                print(fields["A"])
+                print(fields["B"])
+                print(fields["C"])
+                print(fields["D"])
+                if field_value == fields[key_this][len(fields[key])]:
+                    return False
+
         if field_value not in fields[str(chr(actual_position-1))][x:y + 1] and field_value not in fields[key]:
             #print(fields[str(chr(actual_position-1))][x:y + 1])
             actual_position -= 1
@@ -31,7 +50,7 @@ def check_validity(key, field_value):
 
 
 fields = {  "A" : [random.randint(1,9)],
-            "B":[], "C": [],
+            "B":[], "C": [], "D": [],
         }
 
 for number in range(1,9):
@@ -44,7 +63,6 @@ for number in range(1,9):
 
 
 for key in fields.keys():
-
     x = 0
     y = 2
     i = 0
@@ -67,3 +85,4 @@ for key in fields.keys():
 print(fields["A"])
 print(fields["B"])
 print(fields["C"])
+print(fields["D"])
