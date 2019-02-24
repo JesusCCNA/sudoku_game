@@ -4,7 +4,6 @@ rows = {  "A" : [7,8,9,1,2,3,4,5,6],
             "B":[], "C": [], "D": [], "E": [], "F": [], "G": [], "H": [], "I": [],
         }
 
-
 second_row = 65 # Esto puede cambiar ya que no tiene mucho sentido que sean estas letras en específico
 third_row = 66
 for n in range(2,10,3): # Crear varias listas, llenar las listas segun 3 casos de datos posibles
@@ -31,8 +30,6 @@ for n in range(0,3):
 for n in range(0,3):
     rows["B"].append(rows["G"][n])
 
-
-
 rows["C"] = [] # Vacío la lista porque la lista C toma valores por los numeros usados en la variable "second row"
 
 # Juntando todos los valores de las 3 filas "d,f,h" en una sola
@@ -45,14 +42,12 @@ for n in range(0,3):
 for n in range(0,3):
     rows["C"].append(rows["H"][n])
 
-
 rows["D"] = []  # Vacío la lista porque están ya poseen valores que no son necesarios actualmente
 rows["E"] = []
 rows["F"] = []
 rows["G"] = []
 rows["H"] = []
 rows["I"] = []
-
 
 for letter in range(67,71,3): # Esto define los dos valores de las letras a utilizar (D y G)
     for x in range(3):
@@ -81,14 +76,12 @@ for letter in range(67,71,3): # Esto define los dos valores de las letras a util
                 else:
                     rows[chr(letter)].append(1)
 
-
 for n in range(10): # Cambia 5 pares de numeros de posición (podría cambiar varias veces el mismo par de números)
     random_number_1 = randint(1,9)
     random_number_2 = randint(1,9)
     for letter in range(65,74): # Cambiar las posiciones de dos numeros para hacer más difícil el sudoku
         a, b = rows[chr(letter)].index(random_number_1), rows[chr(letter)].index(random_number_2)
         rows[chr(letter)][b], rows[chr(letter)][a] = rows[chr(letter)][a], rows[chr(letter)][b]
-
 
 for letter in range(65,74): # Print all letters (rows)
     print(rows[chr(letter)])
