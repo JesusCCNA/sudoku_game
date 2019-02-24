@@ -52,11 +52,11 @@ rows["I"] = []
 for letter in range(67,71,3): # Esto define los dos valores de las letras a utilizar (D y G)
     for x in range(3):
         letter += 1
-        for n in range(2,10,3):                 # Para que realice el procedimiento con los 3 cuadros
+        for n in range(2,10,3): # Para que realice el procedimiento con los 3 cuadros
             if x != 2:
                 rows[chr(letter)].append(rows[chr(letter-3)][n])
                 rows[chr(letter)].append(rows[chr(letter-2)][n-2])
-                if rows[chr(letter)][-1] != 9:                              # Para las tercera fila de cada cuadro, si el numero anterior a lo de la linea de codigo de abajo es 9, entonces colocar 1
+                if rows[chr(letter)][-1] != 9: # Para las tercera fila de cada cuadro, si el numero anterior a lo de la linea de codigo de abajo es 9, entonces colocar 1
                     rows[chr(letter)].append(rows[chr(letter)][-1] + 1)
                 else:
                     rows[chr(letter)].append(1)
@@ -83,5 +83,5 @@ for n in range(10): # Cambia 5 pares de numeros de posición (podría cambiar va
         a, b = rows[chr(letter)].index(random_number_1), rows[chr(letter)].index(random_number_2)
         rows[chr(letter)][b], rows[chr(letter)][a] = rows[chr(letter)][a], rows[chr(letter)][b]
 
-for letter in range(65,74): # Print all letters (rows)
+for letter in range(65,74): # Imprime todas las letras (filas)
     print(rows[chr(letter)])
